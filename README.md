@@ -191,10 +191,10 @@ WITH most_viewed_tracks
 AS
 (
 	SELECT 
-		S.artist, 
-		S.track, 
-		SUM(S.views) AS most_viewed,
-		DENSE_RANK() OVER (PARTITION BY S.artist ORDER BY SUM(S.views) DESC) AS D_RNK
+	S.artist, 
+	S.track, 
+	SUM(S.views) AS most_viewed,
+	DENSE_RANK() OVER (PARTITION BY S.artist ORDER BY SUM(S.views) DESC) AS D_RNK
 	FROM spotify S 
 	GROUP BY S.artist,S.track
 )
@@ -224,30 +224,31 @@ SELECT * FROM spotify ;
 WITH CTE AS
 (
 	SELECT  
-		S.album, 
-		MAX(S.energy) AS highest_energy,
-		MIN(S.energy) AS lowest_energy
+	S.album, 
+	MAX(S.energy) AS highest_energy,
+	MIN(S.energy) AS lowest_energy
 	FROM spotify S 
 	GROUP BY S.album 
 )
 SELECT 
-	album,
-	highest_energy - lowest_energy AS energy_diff
+album,
+highest_energy - lowest_energy AS energy_diff
 FROM CTE 
 ORDER BY 2 DESC ;
 ```sql
 WITH cte
 AS
-(SELECT 
+(
+	SELECT 
 	album,
 	MAX(energy) as highest_energy,
 	MIN(energy) as lowest_energery
-FROM spotify
-GROUP BY 1
+	FROM spotify
+	GROUP BY 1
 )
 SELECT 
-	album,
-	highest_energy - lowest_energery as energy_diff
+album,
+highest_energy - lowest_energery as energy_diff
 FROM cte
 ORDER BY 2 DESC
 ```
