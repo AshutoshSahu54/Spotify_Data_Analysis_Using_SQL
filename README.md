@@ -221,22 +221,7 @@ ORDER BY S.liveness ;
 ```sql
 SELECT * FROM spotify ;
 
-WITH CTE AS
-(
-	SELECT  
-	S.album, 
-	MAX(S.energy) AS highest_energy,
-	MIN(S.energy) AS lowest_energy
-	FROM spotify S 
-	GROUP BY S.album 
-)
-SELECT 
-album,
-highest_energy - lowest_energy AS energy_diff
-FROM CTE 
-ORDER BY 2 DESC ;
-```sql
-WITH cte
+WITH CTE
 AS
 (
 	SELECT 
