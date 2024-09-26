@@ -289,7 +289,8 @@ To improve query performance, we carried out the following optimization process:
 - **Performance Analysis After Index Creation**
     - After creating the index, we ran the same query again and observed significant improvements in performance:
     - Below is the **screenshot** of the `EXPLAIN` result after index creation:
-      ![EXPLAIN After Index]()
+      
+      ![EXPLAIN After Index](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/Spotify_explain_before_index.png)
 
 - **Graphical Performance Comparison**
     - A graph illustrating the comparison between the initial query execution time and the optimized query execution time after index creation.
