@@ -269,13 +269,26 @@ Here’s an updated section for your **Spotify Advanced SQL Project and Query Op
 
 ## Query Optimization Technique 
 
+```sql
+EXPLAIN ANALYZE             -- PT: 0.201ms & ET: 13.284ms
+SELECT 
+	artist,
+	track,
+	views
+FROM Spotify
+WHERE artist = 'Gorillaz'
+	AND most_played_on = 'Youtube'
+ORDER BY stream DESC LIMIT 25 ;
+```
+
 To improve query performance, we carried out the following optimization process:
 
 - **Initial Query Performance Analysis Using `EXPLAIN`**
     - We began by analyzing the performance of a query using the `EXPLAIN` function.
     - The query retrieved tracks based on the `artist` column, and the performance metrics were as follows:
     - Below is the **screenshot** of the `EXPLAIN` result before optimization:
-    ![EXPLAIN Before Index]()
+    - 
+    ![EXPLAIN Before Index](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/Spotify_Explain_Before_Index.png)
  
       
 
@@ -290,14 +303,14 @@ To improve query performance, we carried out the following optimization process:
     - After creating the index, we ran the same query again and observed significant improvements in performance:
     - Below is the **screenshot** of the `EXPLAIN` result after index creation:
       
-      ![EXPLAIN After Index](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/Spotify_explain_before_index.png)
+      ![EXPLAIN After Index](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/Spotify_Explain_After_Index.png)
 
 - **Graphical Performance Comparison**
     - A graph illustrating the comparison between the initial query execution time and the optimized query execution time after index creation.
     - **Graph view** shows the significant drop in both execution and planning times:
-      ![Performance Graph](https://github.com/najirh/najirh-Spotify-Data-Analysis-using-SQL/blob/main/spotify_graphical%20view%203.png)
-      ![Performance Graph](https://github.com/najirh/najirh-Spotify-Data-Analysis-using-SQL/blob/main/spotify_graphical%20view%202.png)
-      ![Performance Graph](https://github.com/najirh/najirh-Spotify-Data-Analysis-using-SQL/blob/main/spotify_graphical%20view%201.png)
+      ![Performance Graph](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/spotify_graphical%20view%201.png)
+      ![Performance Graph](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/spotify_graphical%20view%202.png)
+      ![Performance Graph](https://github.com/AshutoshSahu54/Spotify_Data_Analysis_Using_SQL/blob/main/spotify_graphical%20view%203.png)
 
 This optimization shows how indexing can drastically reduce query time, improving the overall performance of our database operations in the Spotify project.
 ---
@@ -305,7 +318,7 @@ This optimization shows how indexing can drastically reduce query time, improvin
 ## Technology Stack
 - **Database**: PostgreSQL
 - **SQL Queries**: DDL, DML, Aggregations, Joins, Subqueries, Window Functions
-- **Tools**: pgAdmin 4 (or any SQL editor), PostgreSQL (via Homebrew, Docker, or direct installation)
+- **Tools**: pgAdmin 4 , PostgreSQL 
 
 ## How to Run the Project
 1. Install PostgreSQL and pgAdmin (if not already installed).
