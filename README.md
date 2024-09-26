@@ -239,7 +239,28 @@ ORDER BY 2 DESC
 ```
    
 14. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+
+```sql
+SELECT * FROM Spotify ;
+
+SELECT 
+	track,
+	energy / liveness AS energy_to_liveness_ratio
+FROM Spotify 
+	WHERE energy / liveness > 1.2 ;
+```
+
 15. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+
+```sql
+SELECT * FROM Spotify ;
+
+SELECT 
+	track,
+	SUM(likes) OVER (ORDER BY views) AS cumulative_sum
+FROM Spotify
+	ORDER BY SUM(likes) OVER (ORDER BY views) DESC ;
+```
 
 
 Here’s an updated section for your **Spotify Advanced SQL Project and Query Optimization** README, focusing on the query optimization task you performed. You can include the specific screenshots and graphs as described.
